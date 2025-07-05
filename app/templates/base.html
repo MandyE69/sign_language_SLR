@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{% block title %}SLR{% endblock %}</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/toast.css') }}">
+
+
+   <link rel="apple-touch-icon" sizes="180x180"
+        href="{{ url_for('static', filename='favicon/apple-touch-icon.png') }}">
+  <link rel="icon" type="image/png" sizes="32x32"
+        href="{{ url_for('static', filename='favicon/favicon-32x32.png') }}">
+  <link rel="icon" type="image/png" sizes="16x16"
+        href="{{ url_for('static', filename='favicon/favicon-16x16.png') }}">
+
+  <!-- PWA manifest -->
+  <link rel="manifest"
+        href="{{ url_for('static', filename='favicon/site.webmanifest') }}">
+  {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-left">
+      <img src="{{ url_for('static', filename='logo.webp') }}" alt="SLR Logo" class="logo" />
+      <h1>SLR</h1>
+    </div>
+    <div class="nav-right">
+      <ul>
+        <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="/about"><i class="fas fa-info-circle"></i> About</a></li>
+        <li><a href="/demo"><i class="fas fa-play-circle"></i> Demo</a></li>
+        <li><a href="/predict-ui"><i class="fas fa-hand"></i> Predict</a></li> 
+        <li>
+          <button onclick="handleLogout()" type="button">
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </button>
+        </li>
+      </ul>
+      
+      <!-- Theme Toggle Button -->
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Switch theme">
+        <i class="fas fa-sun sun-icon"></i>
+        <i class="fas fa-moon moon-icon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- JavaScript Files - Load in correct order -->
+  <script src="{{ url_for('static', filename='js/toast.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  
+  <!-- Handle Flask flash messages -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Wait for managers to initialize
+      setTimeout(() => {
+        // Handle Flask flash messages
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              const type = '{{ category }}' === 'message' ? 'success' : '{{ category }}';
+              if (window.toastManager) {
+                window.toastManager.show('{{ message }}', type);
+              }
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+      }, 200);
+    });
+  </script>
+  
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

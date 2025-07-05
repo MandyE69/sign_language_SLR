@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}SLR | Home{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <h2>Break Language Barriers with AI</h2>
+      <p>
+        Experience the future of communication with our advanced Sign Language Recognition system. 
+        Powered by cutting-edge AI technology to bridge communication gaps and create an inclusive world.
+      </p>
+      <!-- <a href="/demo" class="cta-button">
+        <i class="fas fa-rocket"></i>
+        Launch Demo
+      </a> -->
+      <a href="/predict-ui" class="cta-button">
+        <i class="fas fa-hand"></i>
+        Predict
+      </a>
+    </div>
+    <div class="hero-image">
+      <img src="{{ url_for('static', filename='sign2.jpg') }}" alt="Sign Language Recognition" />
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="features">
+  <div class="features-container">
+    <h3>Why Choose SLR?</h3>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-bolt"></i>
+        </div>
+        <h4>Real-time Recognition</h4>
+        <p>Instant sign language detection and translation with high accuracy using advanced machine learning algorithms.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-universal-access"></i>
+        </div>
+        <h4>Accessibility First</h4>
+        <p>Designed with accessibility in mind to empower deaf and hard-of-hearing communities worldwide.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-mobile-alt"></i>
+        </div>
+        <h4>Easy to Use</h4>
+        <p>Simple, intuitive interface that works seamlessly across all devices and platforms.</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

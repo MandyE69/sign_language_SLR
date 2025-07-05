@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block title %}SLR | About{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <h2>About Sign Language Recognition</h2>
+  <p>
+    Empowering communication through cutting-edge AI technology. 
+    Our mission is to break down barriers and create an inclusive world where everyone can communicate freely.
+  </p>
+</section>
+
+<main class="content">
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-bullseye"></i>
+      </div>
+      <h3>Our Mission</h3>
+      <p>
+        To develop accessible, real-time sign language recognition technology that bridges communication gaps 
+        and empowers deaf and hard-of-hearing communities worldwide.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-heart"></i>
+      </div>
+      <h3>Why It Matters</h3>
+      <p>
+        Sign language is the primary communication method for millions of people. Our technology promotes 
+        inclusion in education, healthcare, employment, and social interactions.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-cogs"></i>
+      </div>
+      <h3>Key Features</h3>
+      <ul>
+        <li>Real-time webcam-based recognition</li>
+        <li>High-accuracy deep learning models</li>
+        <li>Intuitive user interface</li>
+        <li>Cross-platform compatibility</li>
+        <li>Continuous learning capabilities</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-users"></i>
+      </div>
+      <h3>Who Benefits</h3>
+      <ul>
+        <li>Deaf and hard-of-hearing individuals</li>
+        <li>Students and educators</li>
+        <li>Healthcare professionals</li>
+        <li>Researchers and developers</li>
+        <li>Public service organizations</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-rocket"></i>
+      </div>
+      <h3>Future Vision</h3>
+      <p>
+        We're expanding to mobile platforms, AR/VR integration, multi-language support, 
+        and real-time speech synthesis to make sign language recognition ubiquitous.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-brain"></i>
+      </div>
+      <h3>Technology</h3>
+      <p>
+        Built with advanced machine learning algorithms, computer vision, and neural networks 
+        to provide accurate, fast, and reliable sign language interpretation.
+      </p>
+    </div>
+  </div>
+
+  <section class="stats">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <h4>95%</h4>
+        <p>Recognition Accuracy</p>
+      </div>
+      <div class="stat-item">
+        <h4>50ms</h4>
+        <p>Response Time</p>
+      </div>
+      <div class="stat-item">
+        <h4>1000+</h4>
+        <p>Signs Recognized</p>
+      </div>
+      <div class="stat-item">
+        <h4>24/7</h4>
+        <p>Available</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h3>Ready to Experience SLR?</h3>
+    <p>Try our live demo and see how our AI-powered sign language recognition works in real-time.</p>
+    <a href="/demo" class="cta-button">
+      <i class="fas fa-play"></i>
+      Launch Demo
+    </a>
+  </section>
+</main>
+{% endblock %}
